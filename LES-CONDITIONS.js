@@ -68,3 +68,25 @@ switch (jour) {
     default:
         console.log("Aucun jour")
 }
+
+
+//Exercice de switch dun menu
+
+console.log("== Menu ==")
+let choix = 3;
+
+switch (choix) {
+    case 1:
+        console.log("Bonjour")
+        break;
+    case 2:
+        console.log("Au revoir");
+        break;
+    case 3:
+        console.log("prenom = aya");
+        break;
+
+    default:
+        console.log("aucun")
+
+}

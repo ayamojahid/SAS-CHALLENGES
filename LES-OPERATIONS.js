@@ -49,4 +49,3 @@ if (eCarte == true || argent > 50) {
 } else {
     console.log("ne peut pas acheter un billet ")
 }
-1
