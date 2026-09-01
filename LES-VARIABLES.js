@@ -69,3 +69,11 @@ let age = 23;
 
 console.log("Bonjour, je mapplelle " + prenom + " " +
     nom + " et j'ai " + age + " ans.");
+
+//Boolean on a TRUE =vraie et    FALSE =faux
+
+let Majeur = true;
+console.log(Majeur);
+
+let Mineur = false;
+console.log(Mineur);
