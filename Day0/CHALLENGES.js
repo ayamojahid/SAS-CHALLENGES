@@ -74,8 +74,8 @@ if (N1 > N2 && N1 > N3) {
 //challenge 3 Declare a year variable. Write a condition to check if it's a leap year (divisible 
 // by 4 AND NOT divisible by 100, UNLESS it's divisible by 400). Log true or false.
 
-let year = 2026;
-if (year % 4 == 0 && (year % 400 == 0 || year % 100 != 0)) {
+let year = 2024;
+if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)) {
     console.log(true);
 } else {
     console.log(false);
