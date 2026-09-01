@@ -92,19 +92,19 @@ if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)) {
 let num1 = 18;
 let num2 = 13;
 
-let operation = 3;
+let operation = "+";
 switch (operation) {
-    case 1:
+    case "+":
         console.log("sommes est " + (num1 + num2))
         break;
-    case 2:
+    case "-":
         console.log("soustraction est " + (num1 - num2))
         break;
-    case 3:
+    case "*":
         console.log("le produit est " + (num1 * num2))
         break;
 
-    case 4:
+    case "/":
         console.log("le quotient est " + (num1 / num2))
         break;
     default:
