@@ -88,3 +88,11 @@ maFonction();
 informer("Aya", "Bensalem", 25); // appel
 informer("Ali", "Benali", 30); // appel
 
+
+//Greeting Function: Write a standard function greet(name) 
+// that takes a string and logs "Hello, [name]!".
+
+function greet (name) {
+    console.log(`Hello ${name}`)
+}
+greet("aya")
