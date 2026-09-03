@@ -19,8 +19,6 @@ afficher(calculate(10, 5, (a, b) => a - b));
 
 
 
-
-
 function createMultiplier(multiplier) {
 return (number) => number *multiplier
 }

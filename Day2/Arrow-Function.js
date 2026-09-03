@@ -42,3 +42,29 @@ console.log(multiply1(4, 5));
  return a*b
  }
 console.log(multiply1(4, 5));
+
+/*Exemple avec ton exercice
+
+Tu avais :
+
+function addition(a, b) {
+    console.log(a + b);
+}
+
+calculer(10, 5, addition);
+
+Tu peux écrire :
+
+const addition = (a, b) => {
+    console.log(a + b);
+};
+
+calculer(10, 5, addition);
+
+Ou directement :
+
+calculer(10, 5, (a, b) => {
+    console.log(a + b);
+});
+
+🔥 Ici, l'Arrow Function est directement utilisée comme callback.*/
