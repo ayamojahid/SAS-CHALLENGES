@@ -48,8 +48,8 @@ let stock=1;
 function factorial(n) {
     for(let i=1 ; i<=n ; i++) {
         stock= stock*i;
-        
     }
     return stock;
 } 
 console.log(factorial(5));
+
