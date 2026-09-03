@@ -98,4 +98,32 @@ on peut imaginer est egale a :
 function nbre(age, aff)*/ 
 
 
-// 
+// exercice
+function saluer(nom , callback) {
+  callback()
+}
+function bienvenue(){
+console.log("bonjour")
+}
+
+
+
+
+
+
+
+
+function bonjour() {
+    console.log("Bonjour");
+}
+
+function auRevoir() {
+    console.log("Au revoir");
+}
+
+function excecuter(callback) {
+  callback();
+}
+
+excecuter(auRevoir);
+excecuter(bonjour);

@@ -39,11 +39,22 @@ construireTriangle(5);
 
 //Challenge 4 — Calculatrice avec callback
 function calculer(nbr1, nbr2, callback) {
-    return callback=nbr1 + nbr2;
+   callback(nbr1 ,nbr2);
 }
 
 function addition(a , b) {
-    console.log("res" + res)
+    console.log(a+b);
 }
 
+function multiplication(a , b) {
+    console.log(a*b);
+}
+
+function soustraction(a , b) {
+    console.log(a-b);
+}
+
+
 calculer(10, 5, addition);
+calculer(10, 5, multiplication);
+calculer(10, 5, soustraction);
