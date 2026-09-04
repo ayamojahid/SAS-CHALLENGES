@@ -39,6 +39,16 @@ console.log(compressing("aaabbc"))
 //Vérificateur d’anagrammes : Écrivez une fonction qui vérifie si deux chaînes sont des anagrammes 
 // l’une de l’autre (contiennent exactement les mêmes lettres dans des ordres différents).
 
-
-
-// function anagrammes()
+function anagramme(chaine1 , chaine2) {
+for (let i=0 ; i<chaine1.length ; i++) {
+    let trouve = false;
+for (let j=0 ; j<chaine2.length ; j++) {
+if(chaine1[i] == chaine2[j]) {
+    trouve = true;
+}  
+    }if(trouve == false ) {
+    return false
+}
+} return true;
+}
+console.log(anagramme("ayamo" , "moaya") )
