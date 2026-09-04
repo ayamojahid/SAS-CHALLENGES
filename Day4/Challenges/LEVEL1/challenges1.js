@@ -17,5 +17,17 @@ for(let i=0 ; i<sum.length ;  i++) {
 console.log(`la somme est ${s}`)
 
 
-//Element Existence: Write a function that takes an array and a value, returning 
-// true if the value exists in the array and false otherwise (without using .includes()).
+// Existence d’un élément : Écrivez une fonction qui prend un tableau et une valeur, en retournant 
+// si la valeur existe dans le tableau et autrement (sans utiliser ).truefalse.includes()
+
+
+function element(array , value) {
+for(let i =0 ; i<array.length ; i++) {
+    if(array[i]==value) {
+        return true
+    }
+       
+}  
+ return false
+}
+console.log(element([12 ,5 , 9 , 6 ] , 8 ))
