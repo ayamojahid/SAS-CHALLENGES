@@ -100,3 +100,5 @@ nombres34.splice(1, 2);
 
 console.log(nombres34);
 
+
+//splice (nn , nn ,  hh)
