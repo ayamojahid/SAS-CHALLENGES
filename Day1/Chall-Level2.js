@@ -6,9 +6,12 @@
 
 console.log("exo3");
 for(let l=1 ; l<=50 ; l++) {
-    if(l%3 == 0) {
+    if(l%3 == 0 && l%5 == 0) {
+        console.log(l + " est " + "FizzBuzz")
+    }
+    if( l%3 == 0) {
         console.log(l + " est " + "Fizz")
-    } else if (l%5 == 0) {
+    } else if ( l%5 == 0) {
         console.log(l + " est " + "Buzz")
     }else {
         console.log(l + " est " + "les autre cas")
