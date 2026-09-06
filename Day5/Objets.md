@@ -1,45 +1,38 @@
-# 📚 Cours JavaScript — Les Objets
+# 🟨 JavaScript — Les Objets
 
-## 1. C'est quoi un objet ?
+## 📌 Introduction
 
-Un **objet** permet de regrouper plusieurs informations qui concernent **la même chose**.
+En JavaScript, un **objet (Object)** permet de regrouper plusieurs informations qui appartiennent à une même chose.
 
-Par exemple, si on parle d'un étudiant :
+Par exemple, pour représenter un étudiant, on peut avoir :
 
-Sans objet :
+* son nom
+* son âge
+* sa ville
+* sa note
 
-```js
-let nom = "Aya";
-let age = 23;
-let ville = "Youssoufia";
-```
-
-On a plusieurs variables séparées.
-
-Avec un objet :
+Au lieu de créer plusieurs variables séparées, on peut regrouper toutes ces informations dans un seul objet.
 
 ```js
 let student = {
-    nom: "Aya",
+    name: "Aya",
     age: 23,
-    ville: "Youssoufia"
+    city: "Youssoufia"
 };
 ```
 
-Maintenant, toutes les informations concernant l'étudiant sont regroupées dans `student`.
-
-👉 Un objet est donc comme une **fiche d'identité**.
+Un objet est donc une structure qui contient des informations sous forme de **clé : valeur**.
 
 ---
 
-# 2. Comment créer un objet ?
+# 1. Créer un objet
 
-La syntaxe est :
+La syntaxe générale est :
 
 ```js
 let objet = {
-    propriété: valeur,
-    propriété: valeur
+    propriete1: valeur1,
+    propriete2: valeur2
 };
 ```
 
@@ -47,33 +40,39 @@ Exemple :
 
 ```js
 let student = {
-    nom: "Aya",
+    name: "Aya",
     age: 23,
-    ville: "Youssoufia"
+    city: "Youssoufia"
 };
+```
+
+On peut représenter l'objet comme ceci :
+
+```text
+student
+│
+├── name → "Aya"
+├── age  → 23
+└── city → "Youssoufia"
 ```
 
 Ici :
 
-```text
-student
-   │
-   ├── nom   → "Aya"
-   ├── age   → 23
-   └── ville → "Youssoufia"
+```js
+name: "Aya"
 ```
 
-Les éléments `nom`, `age`, `ville` sont appelés des **propriétés**.
+est une **propriété** de l'objet.
 
 ---
 
-# 3. Propriété = clé + valeur
+# 2. Propriété, clé et valeur
 
-Regarde :
+Une propriété est composée d'une **clé (key)** et d'une **valeur (value)**.
 
 ```js
 let student = {
-    nom: "Aya",
+    name: "Aya",
     age: 23
 };
 ```
@@ -81,124 +80,113 @@ let student = {
 On peut voir :
 
 ```text
-nom : "Aya"
- ↑       ↑
-clé    valeur
+name : "Aya"
+ ↑        ↑
+clé     valeur
 
 age : 23
  ↑     ↑
-clé  valeur
+clé   valeur
 ```
 
-On appelle souvent :
-
-* **key** → clé
-* **value** → valeur
-* **property** → propriété
-
-Donc :
+### Exemple
 
 ```js
-nom: "Aya"
+name: "Aya"
 ```
 
-est une propriété.
+* `name` → clé
+* `"Aya"` → valeur
+
+```js
+age: 23
+```
+
+* `age` → clé
+* `23` → valeur
 
 ---
 
-# 4. Comment récupérer une valeur ?
+# 3. Accéder aux propriétés
 
-Il existe principalement **2 façons**.
+Il existe deux principales façons d'accéder à une propriété.
 
-## Méthode 1 — notation avec `.` ⭐
+## 3.1 Notation avec le point `.`
+
+C'est la méthode la plus utilisée.
 
 ```js
 let student = {
-    nom: "Aya",
+    name: "Aya",
     age: 23
 };
 
-console.log(student.nom);
-```
-
-Résultat :
-
-```text
-Aya
-```
-
-Et :
-
-```js
+console.log(student.name);
 console.log(student.age);
 ```
 
 Résultat :
 
 ```text
+Aya
 23
 ```
 
-### Pourquoi ?
+La syntaxe :
 
 ```js
-student.nom
+objet.propriete
 ```
 
 signifie :
 
-> Va dans l'objet `student` et donne-moi la valeur de `nom`.
+> Accéder à la propriété de cet objet.
 
 ---
 
-# 5. Méthode 2 — notation avec `[]`
+## 3.2 Notation avec les crochets `[]`
 
-Tu peux aussi faire :
-
-```js
-console.log(student["nom"]);
-```
-
-Résultat :
-
-```text
-Aya
-```
-
-Et :
+On peut également écrire :
 
 ```js
+console.log(student["name"]);
 console.log(student["age"]);
 ```
 
 Résultat :
 
 ```text
+Aya
 23
 ```
 
-Donc :
+Les deux écritures sont équivalentes :
 
 ```js
-student.nom
+student.name
 ```
 
 et
 
 ```js
-student["nom"]
+student["name"]
 ```
 
-donnent la même chose.
+---
 
-### Quand utiliser `[]` ?
+# 4. Pourquoi utiliser `[]` ?
 
-Elle devient particulièrement utile quand le nom de la propriété est dans une variable :
+Les crochets sont particulièrement utiles lorsque le nom de la propriété est stocké dans une variable.
 
 ```js
-let propriete = "nom";
+let student = {
+    name: "Aya",
+    age: 23
+};
 
-console.log(student[propriete]);
+let property = "name";
+
+console.log(student[property]);
 ```
 
 Résultat :
@@ -207,25 +195,25 @@ Résultat :
 Aya
 ```
 
-⚠️ Ici, ne fais pas :
+⚠️ Attention :
 
 ```js
-student.propriete
+student.property
 ```
 
-car JavaScript chercherait une propriété appelée littéralement `"propriete"`.
+ne signifie pas la même chose.
+
+Ici JavaScript cherche une propriété appelée exactement `property`.
 
 ---
 
-# 6. Modifier une propriété
+# 5. Modifier une propriété
 
-Très important pour le CRUD.
-
-On peut modifier une valeur directement :
+On peut modifier directement la valeur d'une propriété.
 
 ```js
 let student = {
-    nom: "Aya",
+    name: "Aya",
     age: 23
 };
 
@@ -238,136 +226,123 @@ Maintenant :
 console.log(student.age);
 ```
 
-donne :
+Résultat :
 
 ```text
 24
 ```
 
-Tu peux aussi modifier le nom :
+On peut également modifier le nom :
 
 ```js
-student.nom = "Sara";
+student.name = "Sara";
 ```
 
 L'objet devient :
 
 ```js
 {
-    nom: "Sara",
+    name: "Sara",
     age: 24
 }
 ```
 
-👉 **UPDATE dans un CRUD** utilise cette logique.
-
 ---
 
-# 7. Ajouter une nouvelle propriété
+# 6. Ajouter une nouvelle propriété
 
-Tu peux ajouter une propriété qui n'existait pas :
+On peut ajouter une propriété qui n'existait pas.
 
 ```js
 let student = {
-    nom: "Aya",
+    name: "Aya",
     age: 23
 };
 
-student.ville = "Youssoufia";
+student.city = "Youssoufia";
 ```
 
-Maintenant :
-
-```js
-console.log(student);
-```
-
-donne quelque chose comme :
+L'objet devient :
 
 ```js
 {
-    nom: "Aya",
+    name: "Aya",
     age: 23,
-    ville: "Youssoufia"
+    city: "Youssoufia"
 }
 ```
 
-Donc :
+La syntaxe est :
 
 ```js
 objet.nouvellePropriete = valeur;
 ```
 
-permet d'ajouter une propriété.
-
 ---
 
-# 8. Supprimer une propriété
+# 7. Supprimer une propriété
 
-Pour supprimer une propriété :
+Pour supprimer une propriété, on utilise `delete`.
 
 ```js
-delete student.age;
+let student = {
+    name: "Aya",
+    age: 23,
+    city: "Youssoufia"
+};
+
+delete student.city;
 ```
 
-Avant :
+L'objet devient :
 
 ```js
 {
-    nom: "Aya",
+    name: "Aya",
     age: 23
 }
 ```
 
-Après :
-
-```js
-{
-    nom: "Aya"
-}
-```
-
-⚠️ `delete` supprime **la propriété**, pas tout l'objet.
+`delete` supprime uniquement la propriété.
 
 ---
 
-# 9. Les valeurs d'un objet peuvent être différentes
+# 8. Les différents types de valeurs
 
-Un objet peut contenir plusieurs types de données.
+Une propriété peut contenir différents types de données.
 
 ```js
 let student = {
-    nom: "Aya",        // string
-    age: 23,            // number
-    active: true,       // boolean
-    notes: [15, 17, 18] // array
+    name: "Aya",          // String
+    age: 23,              // Number
+    active: true,         // Boolean
+    notes: [15, 17, 18]   // Array
 };
 ```
 
-Donc un objet peut contenir :
+Un objet peut donc contenir :
 
-* string
-* number
-* boolean
-* array
-* autre objet
-* fonction
+* `String`
+* `Number`
+* `Boolean`
+* `Array`
+* `Object`
+* `Function`
 
 ---
 
-# 10. Objet contenant un tableau
+# 9. Objet contenant un tableau
 
-Exemple :
+Un objet peut contenir un tableau.
 
 ```js
 let student = {
-    nom: "Aya",
-    age: 23,
+    name: "Aya",
     notes: [15, 17, 18]
 };
 ```
 
-Pour récupérer le tableau :
+Pour accéder au tableau :
 
 ```js
 console.log(student.notes);
@@ -379,7 +354,7 @@ Résultat :
 [15, 17, 18]
 ```
 
-Pour récupérer une note :
+Pour accéder à une note :
 
 ```js
 console.log(student.notes[0]);
@@ -391,40 +366,34 @@ Résultat :
 15
 ```
 
-Pourquoi ?
+On combine donc :
 
-```text
-student
-   │
-   └── notes
-        │
-        ├── 0 → 15
-        ├── 1 → 17
-        └── 2 → 18
+```js
+student.notes[0]
 ```
 
 ---
 
-# 11. Objet dans un objet
+# 10. Objet dans un objet
 
-Oui, c'est possible.
+Un objet peut également contenir un autre objet.
 
 ```js
 let student = {
-    nom: "Aya",
+    name: "Aya",
     age: 23,
 
-    adresse: {
-        ville: "Youssoufia",
-        pays: "Maroc"
+    address: {
+        city: "Youssoufia",
+        country: "Morocco"
     }
 };
 ```
 
-Pour récupérer la ville :
+Pour accéder à la ville :
 
 ```js
-console.log(student.adresse.ville);
+console.log(student.address.city);
 ```
 
 Résultat :
@@ -433,115 +402,97 @@ Résultat :
 Youssoufia
 ```
 
-Tu peux voir :
+On peut représenter cela :
 
 ```text
 student
-   │
-   ├── nom
-   ├── age
-   │
-   └── adresse
-          │
-          ├── ville
-          └── pays
+│
+├── name
+├── age
+│
+└── address
+     │
+     ├── city
+     └── country
 ```
 
 ---
 
-# 12. Le concept TRÈS important : tableau d'objets ⭐⭐⭐
+# 11. Tableau d'objets ⭐
 
-C'est **exactement ce dont tu auras besoin pour le CRUD**.
+Cette notion est **très importante** pour les applications JavaScript et particulièrement pour le CRUD.
 
-Imagine plusieurs étudiants.
-
-Tu pourrais faire :
-
-```js
-let student1 = {
-    id: 1,
-    nom: "Aya",
-    age: 23
-};
-
-let student2 = {
-    id: 2,
-    nom: "Sara",
-    age: 22
-};
-```
-
-Mais ce n'est pas pratique si tu as 100 étudiants.
-
-On utilise donc un **tableau contenant plusieurs objets** :
+Un tableau peut contenir plusieurs objets.
 
 ```js
 let students = [
     {
         id: 1,
-        nom: "Aya",
+        name: "Aya",
         age: 23
     },
 
     {
         id: 2,
-        nom: "Sara",
+        name: "Sara",
         age: 22
     },
 
     {
         id: 3,
-        nom: "Omar",
+        name: "Omar",
         age: 24
     }
 ];
 ```
 
-Ça donne :
+On appelle cela un **tableau d'objets (Array of Objects)**.
+
+On peut le représenter :
 
 ```text
 students
-   │
-   ├── [0]
-   │     ├── id → 1
-   │     ├── nom → Aya
-   │     └── age → 23
-   │
-   ├── [1]
-   │     ├── id → 2
-   │     ├── nom → Sara
-   │     └── age → 22
-   │
-   └── [2]
-         ├── id → 3
-         ├── nom → Omar
-         └── age → 24
+│
+├── [0]
+│    ├── id   → 1
+│    ├── name → Aya
+│    └── age  → 23
+│
+├── [1]
+│    ├── id   → 2
+│    ├── name → Sara
+│    └── age  → 22
+│
+└── [2]
+     ├── id   → 3
+     ├── name → Omar
+     └── age  → 24
 ```
 
 ---
 
-# 13. Comment accéder à un objet dans le tableau ?
+# 12. Accéder à un objet dans un tableau
 
-On commence par l'index du tableau.
+On utilise l'index du tableau.
 
 ```js
 console.log(students[0]);
 ```
 
-Tu récupères :
+Cela récupère le premier objet :
 
 ```js
 {
     id: 1,
-    nom: "Aya",
+    name: "Aya",
     age: 23
 }
 ```
 
-Ensuite tu peux accéder à une propriété :
+Pour récupérer uniquement le nom :
 
 ```js
-console.log(students[0].nom);
+console.log(students[0].name);
 ```
 
 Résultat :
@@ -550,7 +501,7 @@ Résultat :
 Aya
 ```
 
-Ou :
+Pour récupérer l'âge de Sara :
 
 ```js
 console.log(students[1].age);
@@ -562,35 +513,39 @@ Résultat :
 22
 ```
 
-### Retenir cette logique :
+### À retenir
 
 ```js
-students[0].nom
+students[0].name
 ```
 
-=
+signifie :
 
 ```text
 students
    ↓
-premier objet
+premier élément
    ↓
-propriété nom
+propriété name
    ↓
 "Aya"
 ```
 
 ---
 
-# 14. Parcourir un tableau d'objets
+# 13. Parcourir un tableau d'objets
 
-Très important.
-
-On peut utiliser une boucle :
+On peut utiliser une boucle `for`.
 
 ```js
+let students = [
+    { id: 1, name: "Aya", age: 23 },
+    { id: 2, name: "Sara", age: 22 },
+    { id: 3, name: "Omar", age: 24 }
+];
+
 for (let i = 0; i < students.length; i++) {
-    console.log(students[i].nom);
+    console.log(students[i].name);
 }
 ```
 
@@ -604,7 +559,7 @@ Omar
 
 Pourquoi ?
 
-### Première boucle :
+### Première itération
 
 ```js
 i = 0
@@ -613,12 +568,12 @@ i = 0
 Donc :
 
 ```js
-students[0].nom
+students[0].name
 ```
 
-→ Aya
+→ `Aya`
 
-### Deuxième :
+### Deuxième itération
 
 ```js
 i = 1
@@ -627,12 +582,12 @@ i = 1
 Donc :
 
 ```js
-students[1].nom
+students[1].name
 ```
 
-→ Sara
+→ `Sara`
 
-### Troisième :
+### Troisième itération
 
 ```js
 i = 2
@@ -641,55 +596,45 @@ i = 2
 Donc :
 
 ```js
-students[2].nom
+students[2].name
 ```
 
-→ Omar
+→ `Omar`
 
 ---
 
-# 15. Ajouter un objet dans un tableau
+# 14. Ajouter un objet dans un tableau
 
-C'est là que tu commences à voir le CRUD.
-
-On a :
+On utilise souvent `push()`.
 
 ```js
 let students = [
-    { id: 1, nom: "Aya", age: 23 },
-    { id: 2, nom: "Sara", age: 22 }
+    { id: 1, name: "Aya", age: 23 },
+    { id: 2, name: "Sara", age: 22 }
 ];
-```
 
-On veut ajouter Omar.
-
-On fait :
-
-```js
 students.push({
     id: 3,
-    nom: "Omar",
+    name: "Omar",
     age: 24
 });
 ```
 
-Maintenant :
+Le tableau contient maintenant :
 
 ```js
 [
-    { id: 1, nom: "Aya", age: 23 },
-    { id: 2, nom: "Sara", age: 22 },
-    { id: 3, nom: "Omar", age: 24 }
+    { id: 1, name: "Aya", age: 23 },
+    { id: 2, name: "Sara", age: 22 },
+    { id: 3, name: "Omar", age: 24 }
 ]
 ```
 
-👉 C'est le **CREATE** du CRUD.
-
 ---
 
-# 16. Modifier un objet dans le tableau
+# 15. Modifier un objet dans un tableau
 
-Par exemple, Sara a maintenant 25 ans.
+On peut modifier directement une propriété.
 
 ```js
 students[1].age = 25;
@@ -698,65 +643,129 @@ students[1].age = 25;
 Avant :
 
 ```js
-{ id: 2, nom: "Sara", age: 22 }
+{ id: 2, name: "Sara", age: 22 }
 ```
 
 Après :
 
 ```js
-{ id: 2, nom: "Sara", age: 25 }
+{ id: 2, name: "Sara", age: 25 }
 ```
-
-👉 C'est **UPDATE**.
 
 ---
 
-# 17. Supprimer un objet
+# 16. Supprimer un objet d'un tableau
 
-Si tu connais son index :
+Si on connaît son index, on peut utiliser `splice()`.
 
 ```js
 students.splice(1, 1);
 ```
 
-Cela supprime l'objet à l'index `1`.
+La syntaxe :
 
-Avant :
+```js
+array.splice(index, nombre);
+```
+
+Exemple :
 
 ```text
-0 → Aya
-1 → Sara
-2 → Omar
-```
+Avant :
+
+[0] Aya
+[1] Sara
+[2] Omar
+
+students.splice(1, 1)
 
 Après :
 
-```text
-0 → Aya
-1 → Omar
+[0] Aya
+[1] Omar
 ```
 
-👉 C'est **DELETE**.
+Le premier `1` indique l'index.
 
-Mais dans un vrai CRUD, on ne connaît pas toujours l'index. On connaît souvent l'`id`.
-
-Donc il faut d'abord **chercher l'objet**.
-
-C'est pour ça qu'il est important de bien maîtriser les objets + tableaux + boucles avant le CRUD.
+Le deuxième `1` indique combien d'éléments supprimer.
 
 ---
 
-# 18. Les méthodes importantes avec les objets
+# 17. Les objets et les fonctions
 
-Tu vas rencontrer plusieurs méthodes.
-
-## `Object.keys()`
-
-Donne les clés :
+Un objet peut également contenir une fonction.
 
 ```js
 let student = {
-    nom: "Aya",
+    name: "Aya",
+
+    sayHello: function() {
+        console.log("Hello");
+    }
+};
+```
+
+Pour appeler cette fonction :
+
+```js
+student.sayHello();
+```
+
+Résultat :
+
+```text
+Hello
+```
+
+Une fonction qui appartient à un objet est appelée une **méthode (method)**.
+
+---
+
+# 18. `this` dans un objet
+
+Un objet peut utiliser `this` pour accéder à ses propres propriétés.
+
+```js
+let student = {
+    name: "Aya",
+
+    sayHello: function() {
+        console.log("Hello " + this.name);
+    }
+};
+
+student.sayHello();
+```
+
+Résultat :
+
+```text
+Hello Aya
+```
+
+Ici :
+
+```js
+this.name
+```
+
+fait référence à la propriété `name` de l'objet.
+
+> La notion de `this` devient plus importante lorsque l'on étudie les méthodes, les classes et la programmation orientée objet.
+
+---
+
+# 19. Les méthodes `Object`
+
+JavaScript fournit plusieurs méthodes utiles pour travailler avec les objets.
+
+## `Object.keys()`
+
+Retourne les clés de l'objet.
+
+```js
+let student = {
+    name: "Aya",
     age: 23
 };
 
@@ -766,14 +775,14 @@ console.log(Object.keys(student));
 Résultat :
 
 ```text
-["nom", "age"]
+["name", "age"]
 ```
 
 ---
 
 ## `Object.values()`
 
-Donne les valeurs :
+Retourne les valeurs.
 
 ```js
 console.log(Object.values(student));
@@ -789,7 +798,7 @@ Résultat :
 
 ## `Object.entries()`
 
-Donne les paires clé/valeur :
+Retourne les paires clé/valeur.
 
 ```js
 console.log(Object.entries(student));
@@ -799,159 +808,108 @@ Résultat :
 
 ```text
 [
-    ["nom", "Aya"],
+    ["name", "Aya"],
     ["age", 23]
 ]
 ```
 
-👉 Mais **ne te concentre pas trop dessus maintenant**. Pour ton niveau actuel, les bases sont beaucoup plus importantes.
+Ces méthodes sont utiles, mais elles sont moins importantes au début que la compréhension des propriétés et des tableaux d'objets.
 
 ---
 
-# 19. Les objets peuvent avoir des fonctions
+# 20. Objet vs Array
 
-Un objet peut aussi contenir une fonction.
+Il est important de ne pas confondre les deux.
+
+## Array
+
+Un tableau sert principalement à stocker une **liste de valeurs**.
 
 ```js
-let student = {
-    nom: "Aya",
-
-    direBonjour: function() {
-        console.log("Bonjour");
-    }
-};
+let fruits = [
+    "Apple",
+    "Banana",
+    "Orange"
+];
 ```
 
-Pour appeler la fonction :
+On utilise les index :
 
 ```js
-student.direBonjour();
+fruits[0];
 ```
 
 Résultat :
 
 ```text
-Bonjour
+Apple
 ```
-
-Une fonction qui appartient à un objet s'appelle généralement une **méthode**.
-
-Tu verras ça davantage quand tu étudieras la programmation orientée objet.
 
 ---
 
-# 20. `this` — important mais pas maintenant ⭐
+## Object
 
-Tu peux avoir :
+Un objet sert à représenter une **chose avec plusieurs caractéristiques**.
 
 ```js
 let student = {
-    nom: "Aya",
-
-    direBonjour: function() {
-        console.log("Bonjour " + this.nom);
-    }
-};
-```
-
-Puis :
-
-```js
-student.direBonjour();
-```
-
-Résultat :
-
-```text
-Bonjour Aya
-```
-
-Ici :
-
-```js
-this.nom
-```
-
-signifie essentiellement :
-
-> la propriété `nom` de l'objet qui appelle cette méthode.
-
-Mais **ne t'inquiète pas si `this` te semble bizarre maintenant**. Tu peux apprendre les objets sans maîtriser `this`.
-
----
-
-# 21. Objet vs tableau
-
-C'est une confusion très fréquente.
-
-### Tableau
-
-```js
-let fruits = ["pomme", "banane", "orange"];
-```
-
-On utilise des **index** :
-
-```js
-fruits[0]
-```
-
-→ pomme
-
----
-
-### Objet
-
-```js
-let student = {
-    nom: "Aya",
+    name: "Aya",
     age: 23
 };
 ```
 
-On utilise des **propriétés** :
+On utilise les propriétés :
 
 ```js
-student.nom
+student.name;
 ```
 
-→ Aya
+Résultat :
+
+```text
+Aya
+```
 
 ---
 
-### Tableau d'objets
+## Array of Objects
+
+On peut combiner les deux :
 
 ```js
 let students = [
-    { nom: "Aya", age: 23 },
-    { nom: "Sara", age: 22 }
+    { name: "Aya", age: 23 },
+    { name: "Sara", age: 22 }
 ];
 ```
 
-On combine les deux :
+On peut alors écrire :
 
 ```js
-students[0].nom
+students[0].name;
 ```
 
-→ Aya
+Résultat :
 
-C'est **super important pour le CRUD**.
+```text
+Aya
+```
 
 ---
 
-# 22. L'objet dans un vrai projet
+# 21. Les objets dans un CRUD ⭐⭐⭐
 
-Imagine une application de gestion de produits.
+Les objets sont particulièrement importants pour créer un CRUD.
 
-Un produit peut être :
+Imaginons une application de gestion de produits.
+
+Un produit peut être représenté par :
 
 ```js
 let product = {
     id: 1,
     name: "Laptop",
     price: 7000,
-    category: "Informatique",
     stock: 10
 };
 ```
@@ -969,131 +927,146 @@ let products = [
 
     {
         id: 2,
-        name: "Souris",
+        name: "Mouse",
         price: 150,
         stock: 25
     },
 
     {
         id: 3,
-        name: "Clavier",
+        name: "Keyboard",
         price: 300,
         stock: 15
     }
 ];
 ```
 
-Maintenant tu peux faire :
+On peut ensuite réaliser les quatre opérations CRUD :
 
 ```text
-CREATE → ajouter un produit
-READ   → afficher les produits
-UPDATE → modifier un produit
-DELETE → supprimer un produit
+CREATE → Ajouter un produit
+READ   → Afficher les produits
+UPDATE → Modifier un produit
+DELETE → Supprimer un produit
 ```
 
-💡 **Voilà pourquoi les objets sont essentiels pour comprendre un CRUD.**
+Par exemple, ajouter :
+
+```js
+products.push({
+    id: 4,
+    name: "Screen",
+    price: 2000,
+    stock: 8
+});
+```
+
+Modifier :
+
+```js
+products[0].price = 6500;
+```
+
+Supprimer :
+
+```js
+products.splice(1, 1);
+```
 
 ---
 
-# 🧠 Résumé à apprendre
-
-Tu dois être à l'aise avec ces choses :
-
-### ① Créer
+# 22. Exemple complet
 
 ```js
 let student = {
-    nom: "Aya",
+    id: 1,
+    name: "Aya",
+    age: 23,
+    city: "Youssoufia"
+};
+
+// Lire
+console.log(student.name);
+
+// Modifier
+student.age = 24;
+
+// Ajouter une propriété
+student.email = "aya@email.com";
+
+// Supprimer une propriété
+delete student.city;
+
+// Afficher l'objet
+console.log(student);
+```
+
+---
+
+# 23. À retenir absolument ⭐
+
+Les notions essentielles à connaître sont :
+
+### Créer un objet
+
+```js
+let student = {
+    name: "Aya",
     age: 23
 };
 ```
 
-### ② Lire
+### Lire une propriété
 
 ```js
-student.nom
+student.name;
 ```
 
-ou
+### Lire avec `[]`
 
 ```js
-student["nom"]
+student["name"];
 ```
 
-### ③ Modifier
+### Modifier
 
 ```js
 student.age = 24;
 ```
 
-### ④ Ajouter une propriété
+### Ajouter une propriété
 
 ```js
-student.ville = "Youssoufia";
+student.city = "Youssoufia";
 ```
 
-### ⑤ Supprimer une propriété
+### Supprimer une propriété
 
 ```js
-delete student.ville;
+delete student.city;
 ```
 
-### ⑥ Tableau d'objets ⭐⭐⭐
+### Tableau d'objets
 
 ```js
 let students = [
-    { id: 1, nom: "Aya", age: 23 },
-    { id: 2, nom: "Sara", age: 22 }
+    { id: 1, name: "Aya", age: 23 },
+    { id: 2, name: "Sara", age: 22 }
 ];
 ```
 
-### ⑦ Accéder à un objet
+### Accéder à une propriété dans un tableau d'objets
 
 ```js
-students[0]
+students[0].name;
 ```
 
-### ⑧ Accéder à une propriété d'un objet
-
-```js
-students[0].nom
-```
-
-### ⑨ Parcourir
+### Parcourir
 
 ```js
 for (let i = 0; i < students.length; i++) {
-    console.log(students[i].nom);
+    console.log(students[i].name);
 }
 ```
 
----
 
-## 🎯 Pour toi, l'ordre d'apprentissage
-
-Je te conseille vraiment :
-
-```text
-Variables
-   ↓
-Conditions
-   ↓
-Boucles
-   ↓
-Fonctions
-   ↓
-Arrays
-   ↓
-Objects ← TU ES ICI
-   ↓
-Array of Objects ⭐
-   ↓
-Méthodes arrays (push, splice, find, filter...)
-   ↓
-CRUD
-   ↓
-DOM
-   ↓
-CRUD avec HTML + JavaScript
-```
