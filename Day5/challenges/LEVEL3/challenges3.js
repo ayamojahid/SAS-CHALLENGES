@@ -79,3 +79,12 @@ twooobjet()
 //Introduction au clone profond : Écrivez une fonction qui crée manuellement une copie
 //  profonde d’un objet simple (sans objets imbriqués) afin que la modification de la 
 // copie n’affecte pas l’original.
+let original = {
+    nom: "Aya",
+    age: 23
+};
+let copie={};
+for (let key in original) {
+    copie[key] = original[key];
+}
+console.log(copie);
