@@ -14,12 +14,13 @@ function moyyeneGenerale() {
     let sum=0;
     for(let i = 0 ; i<arr[i].notes.length ; i++) {
             sum+=arr[i].notes
-        moyGenera=sum/arr[i].notes.length
+        moyGenera=sum/arr.notes.length
     }
     moyGeneral= moyGenera/arr.length;
     console.log(moyGenera);
     console.log(moyGeneral)
      
 }
-moyyeneGenerale();
+moyyeneGenerale();  
 
+//on peut la fait avec for(let std of moyen )
