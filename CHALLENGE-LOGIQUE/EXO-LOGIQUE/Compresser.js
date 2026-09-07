@@ -1,7 +1,6 @@
 //Défi 12 — Compresser les personnages consécutifs
 let caractere= "aaabbccccdaa";
 let compteur=1 ;
-let clp=true;
 let stok1="";
 let stok2=0;
 
@@ -17,8 +16,6 @@ for(let i=0 ; i<caractere.length; i++) {
        
     }
     
-   
-        
 }   
 console.log(stok1);
 
